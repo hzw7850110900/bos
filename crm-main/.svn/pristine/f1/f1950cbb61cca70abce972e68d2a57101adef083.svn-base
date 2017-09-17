@@ -1,0 +1,4 @@
+jdbcUrl=jdbc:oracle:thin:@DESKTOP-110E6CR:1521:orcl
+driverClass=oracle.jdbc.driver.OracleDriver
+user=itheimacrm
+password=itheimacrm

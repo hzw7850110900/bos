@@ -1,0 +1,12 @@
+com\itheima\bos\dao\take_delivery\WorkBillDao.class
+com\itheima\bos\dao\take_delivery\WayBillDao.class
+com\itheima\bos\dao\StandardDao.class
+com\itheima\bos\dao\system\UserDao.class
+com\itheima\bos\dao\AreaDao.class
+com\itheima\bos\dao\SubAreaDao.class
+com\itheima\bos\dao\system\ResourcesDao.class
+com\itheima\bos\dao\FixedAreaDao.class
+com\itheima\bos\dao\take_delivery\PromotionDao.class
+com\itheima\bos\dao\system\RoleDao.class
+com\itheima\bos\dao\CourierDao.class
+com\itheima\bos\dao\take_delivery\OrderDao.class

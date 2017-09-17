@@ -1,0 +1,26 @@
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:noNamespaceSchemaLocation="../config/ehcache.xsd">
+
+	<!--缓存数据保存在硬盘的位置 -->
+	 <diskStore path="java.io.tmpdir"/>
+	 
+	 <!--缓存参数 
+	 
+	 	maxElementsInMemory: 内存中最大可达到的保存个数
+	 	eternal :是否当内存个数达到上限时保存到硬盘
+	 	timeToIdleSeconds : 内存对象的最大空闲的秒数  如果超过会直接删除掉
+	 	timeToLiveSeconds: 无论空闲与否，内存对象存货的时间
+	 	maxElementsOnDisk : 硬盘最大可以保存的个数
+	  -->
+	<defaultCache
+            maxElementsInMemory="10000"
+            eternal="false"
+            timeToIdleSeconds="120"
+            timeToLiveSeconds="120"
+            maxElementsOnDisk="10000000"
+            diskExpiryThreadIntervalSeconds="120"
+            memoryStoreEvictionPolicy="LRU">
+        <persistence strategy="localTempSwap"/>
+    </defaultCache>
+
+</ehcache>

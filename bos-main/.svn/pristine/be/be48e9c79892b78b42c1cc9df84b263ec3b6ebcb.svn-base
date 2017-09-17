@@ -1,0 +1,13 @@
+com\itheima\bos\domain\take_delivery\PageBean.class
+com\itheima\bos\domain\base\FixedArea.class
+com\itheima\bos\domain\base\SubArea.class
+com\itheima\bos\domain\base\Courier.class
+com\itheima\bos\domain\base\Area.class
+com\itheima\bos\domain\take_delivery\WayBill.class
+com\itheima\bos\domain\base\Standard.class
+com\itheima\bos\domain\take_delivery\Order.class
+com\itheima\bos\domain\system\User.class
+com\itheima\bos\domain\system\Role.class
+com\itheima\bos\domain\system\Resources.class
+com\itheima\bos\domain\take_delivery\WorkBill.class
+com\itheima\bos\domain\take_delivery\Promotion.class

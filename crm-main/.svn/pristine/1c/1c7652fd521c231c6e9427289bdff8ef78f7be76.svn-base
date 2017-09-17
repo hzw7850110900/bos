@@ -1,0 +1,7 @@
+127.0.0.1 - - [02/Aug/2017:15:33:00 +0800] "GET /crm-web/services/customerService/login?telephone=18924155921&password=123456 HTTP/1.1" 200 134 http-bio-9081-exec-1 338
+127.0.0.1 - - [02/Aug/2017:15:34:06 +0800] "GET /crm-web/services/customerService/findByAddress/ HTTP/1.1" 404 - http-bio-9081-exec-3 12
+127.0.0.1 - - [02/Aug/2017:15:40:07 +0800] "GET /crm-web/services/customerService/login?telephone=18924155921&password=123456 HTTP/1.1" 200 134 http-bio-9081-exec-1 262
+127.0.0.1 - - [02/Aug/2017:15:41:28 +0800] "GET /crm-web/services/customerService/findByAddress/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98 HTTP/1.1" 204 - http-bio-9081-exec-3 18
+127.0.0.1 - - [02/Aug/2017:16:05:01 +0800] "GET /crm-web/services/customerService/login?telephone=18924155921&password=123456 HTTP/1.1" 200 134 http-bio-9081-exec-1 322
+127.0.0.1 - - [02/Aug/2017:16:06:25 +0800] "GET /crm-web/services/customerService/findByAddress/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98 HTTP/1.1" 204 - http-bio-9081-exec-3 20
+127.0.0.1 - - [02/Aug/2017:16:07:46 +0800] "GET /crm-web/services/customerService/findByAddress/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98 HTTP/1.1" 204 - http-bio-9081-exec-5 5

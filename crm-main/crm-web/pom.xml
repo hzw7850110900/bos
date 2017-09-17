@@ -1,0 +1,77 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.itheima</groupId>
+		<artifactId>crm-main</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	<artifactId>crm-web</artifactId>
+	<packaging>war</packaging>
+	<dependencies>
+		<dependency>
+  		<groupId>com.itheima</groupId>
+  		<artifactId>crm-domain</artifactId>
+  		<version>0.0.1-SNAPSHOT</version>
+  	</dependency>
+		<!--spring的IOC注解依赖  -->
+  	<dependency>
+  		<groupId>org.springframework</groupId>
+  		<artifactId>spring-context</artifactId>
+  	</dependency>
+  	<!--oracle的驱动依赖  -->
+  	<dependency> 
+  		<groupId>com.oracle</groupId>
+  		<artifactId>ojdbc6</artifactId> 		  		
+  	</dependency>
+  	<!--c3p0依赖  -->	
+  	<dependency>
+  		<groupId>c3p0</groupId>
+  		<artifactId>c3p0</artifactId>
+  		<version>0.9.1.2</version>
+  	</dependency>
+	<!--CXF依赖  -->
+  	<dependency>
+  		<groupId>org.apache.cxf</groupId>
+  		<artifactId>cxf-rt-frontend-jaxrs</artifactId>
+  	</dependency>
+  	<!--转换json依赖  -->
+  	<dependency>
+  		<groupId>org.apache.cxf</groupId>
+  		<artifactId>cxf-rt-rs-extension-providers</artifactId>
+  	</dependency>
+  	<dependency>
+  		<groupId>org.codehaus.jettison</groupId>
+  		<artifactId>jettison</artifactId>
+  	</dependency>
+  	<!--servlet依赖  -->
+  	<dependency>
+  		<groupId>javax.servlet</groupId>
+  		<artifactId>servlet-api</artifactId>
+  	</dependency>
+  	<!--struts2依赖  -->
+  	<dependency>
+			<groupId>org.apache.struts</groupId>
+			<artifactId>struts2-core</artifactId>
+			<!-- 排除javassit -->
+			<exclusions>
+				<exclusion>
+					<artifactId>javassist</artifactId>
+					<groupId>javassist</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.struts</groupId>
+			<artifactId>struts2-spring-plugin</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.struts</groupId>
+			<artifactId>struts2-convention-plugin</artifactId>
+		</dependency>
+		
+	</dependencies>
+	<build>
+		<finalName>crm-web</finalName>
+	</build>
+</project>

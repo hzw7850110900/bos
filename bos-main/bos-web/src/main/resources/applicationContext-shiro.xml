@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" 
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context.xsd
+	http://www.springframework.org/schema/aop
+	http://www.springframework.org/schema/aop/spring-aop.xsd
+	http://www.springframework.org/schema/tx 
+	http://www.springframework.org/schema/tx/spring-tx.xsd
+	http://www.springframework.org/schema/data/jpa
+	http://www.springframework.org/schema/data/jpa/spring-jpa.xsd
+	">
+	
+	<!--配置一个shiro认证的bean  -->
+	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+		<!--配置安全管理器 -->
+		<property name="securityManager" ref="securityManager"></property>
+		<!--登录页面地址，只要认证失败都统一跳转到当前页面 -->
+		<property name="loginUrl" value="/login.jsp"></property>
+		<!--成功访问页面，认证成功后跳转的页面  -->
+		<property name="successUrl" value="/index.jsp"></property>
+		<!--未授权的页面  -->
+		<property name="unauthorizedUrl" value="/noAuth.jsp"/>
+		<!--shiro认证和授权的表达式  配置访问规则-->
+		<!--认证	  -->
+		<property name="filterChainDefinitions">
+			<value>
+				<!--放行资源  -->			
+				/css/**=anon
+				/js/**=anon
+				/images/**=anon
+				/validatecode.jsp*=anon
+				/services/*=anon
+				/user/login.action*=anon 
+				
+				<!--用户授权  -->	
+				/pages/base/takeDeliveryTime.jsp* = perms[takeDeliveryTime:*]
+				/pages/base/busManager.jsp* = perms[busManager:*]
+				/pages/base/standard.jsp* = perms[standard:*]
+				/pages/base/courier.jsp* = perms[courier:*]
+				/pages/base/fixed_area.jsp* = perms[fixedArea:*]
+				/pages/base/area.jsp* = perms[area:*]
+				/pages/base/sub_area.jsp* = perms[subArea:*]
+				/pages/take_delivery/waybill_quick.jsp* = perms[waybillquick:*]
+				/pages/take_delivery/waybill.jsp* = perms[waybill:*]
+				/pages/take_delivery/waybill_manage.jsp* = perms[waybillmanage:*]
+				/pages/take_delivery/promotion.jsp* = perms[promotion:*]
+				/pages/take_delivery/order.jsp* = perms[order:*]
+				/pages/take_delivery/manualOrder.jsp* = perms[order:*]
+				/pages/take_delivery/workbill.jsp* = perms[workbill:*]				
+				/pages/system/user.jsp* = perms[user:*]
+				/pages/system/role.jsp* = perms[role:*]
+				/pages/system/resource.jsp* = perms[resource:*]
+				<!--验证  -->			
+			    /**=authc			
+			</value>
+			
+		</property>
+		
+	</bean>	
+	<!--创建securityManager安全管理器  -->
+	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+		<!--注入realm  -->
+		<property name="realm" ref="bosRealm"></property>
+		<!--配置Ehcache的缓存管理器  -->
+		<property name="cacheManager" ref="shiroCacheManager"></property>
+	</bean>
+	<!--创建shiro的缓存管理器  -->
+	<bean id="shiroCacheManager" class="org.apache.shiro.cache.ehcache.EhCacheManager">
+		<property name="cacheManagerConfigFile" value="classpath:ehcache.xml"></property>
+	</bean>
+	<!--创建realm  -->
+	<bean id="bosRealm" class="com.itheima.bos.realm.BosRealm"></bean>
+</beans>

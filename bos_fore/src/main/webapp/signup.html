@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta content="application/xhtml+xml;charset=UTF-8"
+	http-equiv="Content-Type">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>我的速运-注册</title>
+
+<link rel="stylesheet" type="text/css" href="css/styleloginsign.css">
+<link rel="stylesheet" type="text/css"
+	href="css/bootstrap/bootstrap.min.css">
+
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/self/effect.js"></script>
+<script type="text/javascript" src="js/form.js"></script>
+<script type="text/javascript" src="js/jquery.validate.js"></script>
+<script type="text/javascript">
+    var result;
+	$(function() {
+		result=$("#registForm").validate({
+			rules : {
+				telephone : {
+					required : true,					
+					//校验手机号是否合法
+					 isMobile : true,					
+					 //查询数据库判断手机号是否被注册
+					 remote:{
+						 type:"POST",
+				         url:"customer/checkPhoneIsExist.action",
+				         //接收参数
+				         data:{
+				        	telephone: function() {return $("#inputTelephone").val();}
+				         	},
+				        
+					 },
+					 //isexist:true
+				},
+				validCode:{
+					required : true,
+					rangelength:[4,4]
+				},
+				password : {
+					required : true,
+					rangelength:[5,12]
+				},
+				confirm_password : {
+					required : true,
+					rangelength:[5,12],
+					equalTo : "#inputpassword"
+				},
+				email : {
+					required : true,
+					email : true
+				},
+				agree : {
+					required : true
+				}
+			},
+			messages : {
+				telephone : {
+					required : "手机号不能为空",	
+					isMobile : "请正确输入您的手机号码",					
+					remote:	"你输入的手机号已被注册"
+				},
+				validCode:{
+					required : "验证码不能为空",
+					rangelength:"验证码长度只能为4位"
+				},
+				password : {
+					required : "密码不能为空",
+					rangelength: "密码长度区间为5-12位"
+				},
+				confirm_password : {
+					required : "确认密码不能为空",
+					rangelength : "密码长度区间为5-12位",
+					equalTo : "两次密码输入不一致"
+				},
+				email : {
+					required : "邮箱不能为空",
+					email : "邮箱格式不正确"
+				},
+				agree : {
+					required : "您要勾选同意服务协议"
+				}
+			}
+		});
+	});
+	//单独编写方法校验手机号	
+	jQuery.validator
+			.addMethod(
+					"isMobile",
+					function(value, element) {
+						var length = value.length;
+						var mobile = /^1[34578]\d{9}$/;
+						return this.optional(element)
+								|| (length == 11 && mobile.test(value));
+					}, "请正确填写您的手机号码");
+</script>
+
+
+<!--[if IE]>
+    <script  type="text/javascript" src="js/html5.js"></script>
+    <script  type="text/javascript" src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+	<!--head-->
+	<div class="loginnav">
+		<nav class="navbar navbar-default">
+			<div class="container">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="#"><img
+						src="images/icon/logo.png"></a> <span class="logintitle">用户注册</span>
+				</div>
+
+			</div>
+
+		</nav>
+	</div>
+
+	<div class="container">
+		<!--mainsignup-->
+		<section class="mainsign">
+			<div class="headnav"></div>
+
+			<div class="signup">
+				<div class="col-md-9 signupbox">
+					<form class="form col-md-7" method="post" id="registForm">
+						<div class=" form-group">
+							<label for="inputaccount" class="col-sm-3 control-label"><b>*</b>手机号</label>
+							<div class="col-sm-6">
+								<input type="text" class="form-control" id="inputTelephone"
+									placeholder="请输入手机号" name="telephone">
+							</div>
+							<div class="col-sm-3">
+								<span id="mesPhone"></span>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="inputaccount" class="col-sm-3 control-label"><b>*</b>验证码</label>
+							<div class="col-sm-5">
+								<input type="text" class="form-control" id="inputcode"
+									placeholder="请输入验证码" name="validCode">
+							</div>
+							<div class="col-sm-3 song">
+								<input type="button" class="btn btn-default" id="validCode"
+									value="获取验证码" />
+							</div>
+
+						</div>
+						<div class="form-group">
+							<label for="inputaccount" class="col-sm-3 control-label"><b>*</b>密码</label>
+							<div class="col-sm-8">
+								<input type="password" class="form-control" id="inputpassword"
+									placeholder="6-16位数字或英文字母" name="password">
+								<p class="text-right grey">安全强度：*****</p>
+							</div>
+
+						</div>
+
+						<div class="form-group">
+							<label for="inputaccount" class="col-sm-3 control-label"><b>*</b>确认密码</label>
+							<div class="col-sm-8">
+								<input type="password" class="form-control" id="inputpassword2"
+									placeholder="6-16位数字或英文字母" name="confirm_password">
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="inputaccount" class="col-sm-3 control-label"><b>*</b>绑定邮箱</label>
+							<div class="col-sm-8">
+								<input type="email" class="form-control" id="inputemail"
+									placeholder="请输入需要绑定的邮箱" name="email">
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-sm-offset-3 col-sm-8 song">
+								<div class="checkbox">
+									<label> <input type="checkbox" name="agree">
+										查看并同意<a href="#"> 《速运快递服务协议》</a>
+									</label>
+								</div>
+
+							</div>
+						</div>
+						<div class="form-group signbtn">
+							<div class="col-sm-offset-3 col-sm-8 song">
+								<a class="btn btn-danger" href="#" id="regist">注册</a>
+								
+							</div>
+						</div>
+					</form>
+				</div>
+				<div class="col-md-3 introbox">
+					<div class="signintro">
+						<h5 class="redtext">注册成为速运会员，您可以享受更多的服务！</h5>
+						<ul>
+							<li class="list-group">积分奖励，电子运单专享特权</li>
+							<li class="list-group">快速理赔，保价优惠</li>
+							<li class="list-group">大陆偏远地区附加费减免</li>
+							<li class="list-group">快件路由订阅，快件信息管理，批量下单</li>
+
+						</ul>
+					</div>
+
+				</div>
+			</div>
+		</section>
+
+	</div>
+
+	<!--foot-->
+	<footer>
+		<section class="copyright size12">
+			<div class="container">
+				<p class="text-center">地址：北京市昌平区建材城西路金燕龙办公楼一层 邮编：100096
+					电话：400-618-4000 传真：010-82935100</p>
+				<p class="text-center">京ICP备08001421号京公网安备110108007702</p>
+			</div>
+		</section>
+	</footer>
+
+
+</body>
+<script type="text/javascript">
+$(function() {
+		$("#validCode").click(function() {
+			//获取手机号
+			var telephone = $("#inputTelephone").val();
+			//判断手机号是否合法
+			var regex = /^1[34578]\d{9}$/;
+			if (!regex.test(telephone)) {
+				alert("你输入的手机号不正确,请重新输入");
+				return;
+			}
+			setTime();
+			//异步提交发送验证码
+			$.post("customer/send.action", {
+				telephone : telephone
+			}, function(data) {
+				if (data.success) {
+					alert("发送成功");
+				} else {
+					alert("发送失败,原因是:" + data.msg);
+				}
+			}, "json");
+		});
+	
+		var time = 60;
+	
+		function setTime() {
+			if (time > 0) {
+				//修改按钮的value值
+				$("#validCode").val(time + "秒后重新发送");
+				//让按钮变得不可被点击
+				$("#validCode").prop("disabled", true);
+				//时间--
+				time--
+			} else {
+				//按钮的值重新发送
+				$("#validCode").val("重新发送");
+				//使按钮可被点击
+				$("#validCode").prop("disabled", false);
+				//重置时间
+				time = 60;
+				//结束方法
+				return;
+			}
+			//定时器
+			window.setTimeout(function() {
+				setTime();
+			}, 1000);
+		}
+
+		//异步提交注册用户
+		$("#regist").click(function(){	
+			
+			var result=$("#registForm").validate({
+				rules : {
+					telephone : {
+						required : true,					
+						//校验手机号是否合法
+						 isMobile : true,					
+						 //查询数据库判断手机号是否被注册
+						 remote:{
+							 type:"POST",
+					         url:"customer/checkPhoneIsExist.action",
+					         //接收参数
+					         data:{
+					        	telephone: function() {return $("#inputTelephone").val();}
+					         	},					        
+						 },
+						
+					},
+					validCode:{
+						required : true,
+						rangelength:[4,4]
+					},
+					password : {
+						required : true,
+						rangelength:[5,12]
+					},
+					confirm_password : {
+						required : true,
+						rangelength:[5,12],
+						equalTo : "#inputpassword"
+					},
+					email : {
+						required : true,
+						email : true
+					},
+					agree : {
+						required : true
+					}
+				},
+				messages : {
+					telephone : {
+						required : "手机号不能为空",	
+						isMobile : "请正确输入您的手机号码",					
+						remote:	"你输入的手机号已被注册"
+					},
+					validCode:{
+						required : "验证码不能为空",
+						rangelength:"验证码长度只能为4位"
+					},
+					password : {
+						required : "密码不能为空",
+						rangelength: "密码长度区间为5-12位"
+					},
+					confirm_password : {
+						required : "确认密码不能为空",
+						rangelength : "密码长度区间为5-12位",
+						equalTo : "两次密码输入不一致"
+					},
+					email : {
+						required : "邮箱不能为空",
+						email : "邮箱格式不正确"
+					},
+					agree : {
+						required : "您要勾选同意服务协议"
+					}
+				}
+			});
+						
+			if(result.valid()){								
+				//异步提交表单
+				$.ajax({
+					url:"customer/register.action",
+					//serialize序列表单的内容变成字符串 用于ajax提交表单
+					data:$("#registForm").serialize(),
+					type:"post",
+					dataType:"json",
+					success:function(data){
+						if(data.success){
+							//注册成功
+							window.location.href="signup-success.html";
+							//注册成功后需要发送激活邮件到邮箱
+						}else{
+							//注册失败则显示错误信息到页面
+							$(".headnav").html("注册失败,原因是:"+data.msg);
+							$(".headnav").css("color","red");
+						}
+					}
+				});
+			}
+		});
+			
+			
+});
+	</script>
+</html>

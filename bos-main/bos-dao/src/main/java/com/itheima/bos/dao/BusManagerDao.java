@@ -1,0 +1,7 @@
+package com.itheima.bos.dao;
+
+import com.itheima.bos.domain.base.BusManager;
+
+public interface BusManagerDao extends BaseDao<BusManager>{
+
+}

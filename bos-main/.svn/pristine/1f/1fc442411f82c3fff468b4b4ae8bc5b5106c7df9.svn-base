@@ -1,0 +1,65 @@
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
+<%@ taglib uri="http://shiro.apache.org/tags"  prefix="shiro"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>人工分单</title>
+</head>
+
+<!-- 导入easyui的资源文件 -->
+<!-- jquery的文件 -->
+<script type="text/javascript" src="../../js/easyui/jquery.min.js"></script>
+<!-- easyui的js文件 -->
+<script type="text/javascript"
+	src="../../js/easyui/jquery.easyui.min.js"></script>
+<!-- 语言js -->
+<script type="text/javascript"
+	src="../../js/easyui/locale/easyui-lang-zh_CN.js"></script>
+<!-- 图标css -->
+<link rel="stylesheet" type="text/css"
+	href="../../js/easyui/themes/icon.css">
+<!-- 模板的css -->
+<link rel="stylesheet" type="text/css"
+	href="../../js/easyui/themes/default/easyui.css">
+<script type="text/javascript" src="../../js/form.js"></script>
+<!--导入通用代码  -->
+<body>
+	<!-- 查询数据 -->
+	
+	<div id="list"></div>
+		
+	<script type="text/javascript">
+			  /*定义一个变量 标识当前的模块名称  */
+			  var action="order";
+			  
+			  var columns=[ [ {
+					field : 'id',
+					title : '编号',
+					width : 100
+				}, {
+					field : 'name',
+					title : '收货标准名称',
+					width : 200
+				}, {
+					field : 'minWeight',
+					title : '最小重量',
+					width : 100
+				}, {
+					field : 'maxWeight',
+					title : '最大重量',
+					width : 100
+				}, {
+					field : 'minLength',
+					title : '最小长度',
+					width : 100
+				}, {
+					field : 'maxLength',
+					title : '最大长度',
+					width : 100
+				} ] ];
+	  
+	</script>
+</body>
+</html>

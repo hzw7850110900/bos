@@ -1,0 +1,12 @@
+127.0.0.1 - - [28/Jul/2017:19:14:18 +0800] "GET /crm-web/services/customerService/checkPhoneIsExist?telephone=18924155921 HTTP/1.1" 200 127 http-bio-9081-exec-1 414
+127.0.0.1 - - [28/Jul/2017:19:14:33 +0800] "GET /crm-web/services/customerService/checkPhoneIsExist?telephone=18924155921 HTTP/1.1" 200 25 http-bio-9081-exec-3 11
+127.0.0.1 - - [28/Jul/2017:19:15:12 +0800] "POST /crm-web/services/customerService/save HTTP/1.1" 204 - http-bio-9081-exec-5 43
+127.0.0.1 - - [28/Jul/2017:19:31:09 +0800] "GET /crm-web/services/customerService/checkPhoneIsExist?telephone=18924155921 HTTP/1.1" 200 25 http-bio-9081-exec-1 237
+127.0.0.1 - - [28/Jul/2017:19:31:40 +0800] "POST /crm-web/services/customerService/save HTTP/1.1" 204 - http-bio-9081-exec-3 111
+127.0.0.1 - - [28/Jul/2017:19:34:37 +0800] "PUT /crm-web/services/customerService/activeCustomer?telephone=18924155921 HTTP/1.1" 204 - http-bio-9081-exec-5 22
+127.0.0.1 - - [28/Jul/2017:19:37:20 +0800] "GET /crm-web/services/customerService/checkPhoneIsExist?telephone=18924155921 HTTP/1.1" 200 25 http-bio-9081-exec-7 7
+127.0.0.1 - - [28/Jul/2017:19:37:46 +0800] "POST /crm-web/services/customerService/save HTTP/1.1" 204 - http-bio-9081-exec-9 7
+127.0.0.1 - - [28/Jul/2017:19:38:52 +0800] "PUT /crm-web/services/customerService/activeCustomer?telephone=18924155921 HTTP/1.1" 204 - http-bio-9081-exec-1 9
+127.0.0.1 - - [28/Jul/2017:19:40:05 +0800] "GET /crm-web/services/customerService/checkPhoneIsExist?telephone=18924155921 HTTP/1.1" 200 25 http-bio-9081-exec-3 4
+127.0.0.1 - - [28/Jul/2017:19:40:42 +0800] "POST /crm-web/services/customerService/save HTTP/1.1" 204 - http-bio-9081-exec-5 9
+127.0.0.1 - - [28/Jul/2017:19:40:59 +0800] "PUT /crm-web/services/customerService/activeCustomer?telephone=18924155921 HTTP/1.1" 204 - http-bio-9081-exec-7 8
